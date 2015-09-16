@@ -1,0 +1,136 @@
+$border-color: rgba(0, 0, 0, 0.15)
+$font-color: #555
+// -----------------------------------
+// Mixins
+// -----------------------------------
+=animation($content)
+  animation: $content
+  -moz-animation: $content
+  -webkit-animation: $content
+=transform($content)
+  transform: $content
+  -moz-transform: $content
+  -webkit-transform: $content
+=keyframes($name)
+  @keyframes #{$name}
+    @content
+
+  @-moz-keyframes #{$name}
+    @content
+
+  @-webkit-keyframes #{$name}
+    @content
+
+// -----------------------------------
+// Styles
+// -----------------------------------
+* 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-size: 14px
+  line-height: 20px
+  color: $font-color
+
+a
+  color: $font-color
+
+body
+  margin: 5px
+
+.btn
+  padding: 10px 20px 10px 10px
+  background: #0066ff
+  border: 1px solid #0033ff
+  border-radius: 3px
+  color: #ffffff
+  position: relative
+  &::after
+    content: " "
+    width: 0
+    height: 0
+    border-style: solid
+    position: absolute
+    top: 37%
+    right: 7px
+    border-width: 5px 0px 5px 5px
+    border-color: transparent transparent transparent #FFF    
+  &.btn-focus
+    background: #005fed
+    &::after
+      top: 48%
+      right: 5px
+      border-width: 5px 5px 0 5px
+      border-color: #ffffff transparent transparent transparent
+    
+
+.dropdown-container
+  width: 20%
+  float: left
+  margin-right: 1em
+.list-container
+  width: 100% 
+  border: 1px solid $border-color
+  border-radius: 3px
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176)
+  ul 
+    padding: 5px 0px
+    margin: 2px 0px 0px
+    li
+      font-size: 14px
+      line-height: 20px
+      text-transform: capitalize
+      a
+        text-decoration: none
+        display: block
+        padding: 3px 20px
+        clear: both
+        font-weight: 400
+        line-height: 1.42857
+        color: #333
+        white-space: nowrap
+        &:hover
+          background: #F5F5F5
+    &:not(:last-of-type)
+      padding-bottom: 5px
+      border-bottom: 1px solid $border-color
+
+// -----------------------------------
+// Transitions
+// -----------------------------------
+.list-container
+  &.show
+    opacity: 100
+    transition: all 0.5s ease 0s, visibility 0s linear 0.5s 
+    &.fade-in-and-out
+      @include transform(translateZ(0))
+      @include transform(translateY(0%))
+    &.drop
+      @include transform(translateZ(0))
+      @include transform(translateY(0%))
+    &.rotate
+      @include animation(1s roatateShow)
+  &.hide
+    opacity: 0
+    transition: all 0.5s ease 0s, hidden 0s linear 0.5s 
+    &.fade-in-and-out
+      @include transform(translateZ(0))
+      @include transform(translateY(5%))    
+    &.drop
+      @include transform(translateZ(0))
+      @include transform(translateY(300%))
+    &.rotate
+      @include animation(1s roatateHide)
+ 
+// -----------------------------------
+// Animations
+// -----------------------------------
+@include keyframes(roatateShow)
+  from 
+    @include transform(rotate(330deg))
+  to 
+    @include transform(rotate(360deg))
+
+@include keyframes(roatateHide)
+  from 
+    @include transform(rotate(360deg))
+  to 
+    @include transform(rotate(330deg))

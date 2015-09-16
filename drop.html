@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel=stylesheet href="css/reset.css">
+  <link rel=stylesheet href="css/normalize.css">
+  <link rel=stylesheet href="css/style.css">
+</head>
+<body>
+  <div id="navigation" class="nav">
+    <button id="menu-button" class="btn btn-primary">Menu Title</button>
+  </div>
+  <script src="js/dropdown.js"></script>
+  <script type="text/javascript">
+  (function(){
+
+    var dropdown = new Dropdown({ elemId: 'menu-button', animations: 'drop' }, 
+                                [{title: 'Your can custom', url:'#aaa', seq: 3, group: 'a'},
+                                 {title: 'your list by Js', url:'#bbb', seq: 1, group: 'a'},
+                                 {title: 'You dont have to', url:'#ccc', seq: 2, group: 'a'},
+                                 {title: 'write the html code', url:'#ccc', seq: 2, group: 'ab'},
+                                 {title: 'by your own self', url:'#ccc', seq: 3, group: 'ab'},
+                                 {title: 'CCCCC', url:'#ccc', seq: 1, group: 'ab'},
+                                 {title: 'CCCCC', url:'#ccc', seq: 2, group: 'a'},
+                                 {title: 'DDDDD', url:'#ddd', seq: 1, group: 'b'}]
+    );
+  })();  
+  </script>
+</body>
+</html>
